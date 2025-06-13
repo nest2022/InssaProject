@@ -1,120 +1,108 @@
-/* Estilos generales para HTML y Body */
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%; /* Ahora 100% en lugar de 100vh para mejor compatibilidad móvil */
-  overflow: hidden; /* Evita el scroll global */
-  font-family: "Inter", sans-serif; /* Tipografía moderna */
-  background-color: #292929; /* Fondo oscuro para resaltar el modelo */
-  color: #ffffff; /* Color de texto por defecto para elementos globales si los hubiera */
+  height: 100%;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  background-color: #292929;
+  color: #ffffff;
 }
 
-/* Estilos para el canvas de Three.js */
 canvas {
   display: block;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Ocupa todo el ancho */
-  height: 100%; /* Ocupa toda la altura */
-  z-index: 1; /* Asegura que esté detrás de la UI */
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
-/* ------------------------------------------- */
-/* Contenedor Principal (main-container) */
-/* ------------------------------------------- */
 .main-container {
-  position: fixed; /* Ocupa toda la pantalla, pero permite que los elementos internos se posicionen */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Fallback para navegadores que no soportan --vw */
+  width: 100vw;
   width: calc(
     var(--vw, 1vw) * 100
-  ); /* Usa la variable --vw para anchura dinámica */
-  height: 100vh; /* Fallback para navegadores que no soportan --vh */
+  );
+  height: 100vh;
   height: calc(
     var(--vh, 1vh) * 100
-  ); /* Usa la variable --vh para altura dinámica */
-  z-index: 10; /* Asegura que esté por encima del canvas */
-  pointer-events: none; /* Permite clics a través del contenedor si no hay elementos interactivos directamente en él */
+  );
+  z-index: 10;
+  pointer-events: none;
 }
 
-/* ------------------------------------------- */
-/* Barra Superior (top-bar) */
-/* ------------------------------------------- */
 .top-bar {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 75px; /* Altura aumentada para más presencia */
-  background-color: #000000; /* Fondo negro sólido */
+  height: 75px;
+  background-color: #000000;
   display: flex;
-  justify-content: space-between; /* Alinea los elementos a los extremos */
+  justify-content: space-between;
   align-items: center;
-  padding: 0 30px; /* Más padding horizontal */
+  padding: 0 30px;
   box-sizing: border-box;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada y oscura */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   z-index: 20;
   pointer-events: all;
-  border-bottom-left-radius: 20px; /* Bordes redondeados más acentuados */
+  border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-/* Estilos para la imagen del logo centralizada */
 .top-bar-logo {
-  max-height: 80%; /* Asegura que la imagen no exceda la altura de la barra */
-  width: auto; /* Mantiene la proporción de la imagen */
-  display: block; /* Elimina espacio extra debajo de la imagen */
-  position: absolute; /* Posiciona la imagen independientemente de los flex items */
-  left: 50%; /* Mueve el punto de inicio al centro */
-  transform: translateX(-50%); /* Centra la imagen horizontalmente */
-  pointer-events: none; /* No interactuable con el ratón */
+  max-height: 80%;
+  width: auto;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .top-bar-left,
 .top-bar-right {
   display: flex;
   align-items: center;
-  /* Flex-grow permite que estos contenedores ocupen el espacio disponible
-     y empujen la imagen central hacia el centro real */
   flex-grow: 1;
 }
 
 .top-bar-left {
-  justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  justify-content: flex-start;
 }
 
 .top-bar-right {
-  justify-content: flex-end; /* Alinea los elementos a la derecha */
+  justify-content: flex-end;
 }
 
 .top-button {
-  background-color: #222222; /* Botones gris oscuro para contraste */
+  background-color: #222222;
   color: #ffffff;
   border: none;
-  border-radius: 15px; /* Más redondeado */
-  padding: 12px 25px; /* Más padding */
-  margin-left: 20px; /* Más espacio entre botones */
+  border-radius: 15px;
+  padding: 12px 25px;
+  margin-left: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 1.1em; /* Ligeramente más grande */
-  font-weight: 600; /* Semi-negrita */
+  font-size: 1.1em;
+  font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra inicial */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   pointer-events: all;
-  transform: translateY(0); /* Default position: not lifted */
+  transform: translateY(0);
 }
 
-/* Iconos SVG dentro de los botones */
 .top-button .icon {
-  width: 26px; /* Tamaño de íconos */
+  width: 26px;
   height: 26px;
-  margin-right: 12px; /* Más espacio entre ícono y texto */
-  color: #ffffff; /* Color blanco para los íconos */
+  margin-right: 12px;
+  color: #ffffff;
 }
 
 .top-button span {
@@ -123,90 +111,83 @@ canvas {
 }
 
 .volver-button {
-  margin-left: 0; /* Reset margin for the first button */
-  padding-right: 30px; /* Más padding para el texto */
-  background-color: #fdea14; /* Botón Volver en amarillo Innsa */
-  color: #333333; /* Texto oscuro para el botón amarillo */
+  margin-left: 0;
+  padding-right: 30px;
+  background-color: #fdea14;
+  color: #333333;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .volver-button .icon {
-  color: #333333; /* Icono oscuro para el botón amarillo */
+  color: #333333;
 }
 
-/* Apply hover effects only on devices that support hover (e.g., desktops) */
 @media (hover: hover) and (pointer: fine) {
   .top-button:hover {
-    background-color: #333333; /* Tono de gris ligeramente más claro */
-    transform: translateY(-4px); /* Efecto "levantar" más pronunciado */
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5); /* Sombra más grande al pasar el ratón */
+    background-color: #333333;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
   }
 }
 
-/* Active state for both desktop clicks and mobile taps */
 .top-button:active {
-  transform: translateY(-4px); /* Apply the lift effect during the click/tap */
-  background-color: #fdea14; /* Color de acento al activar */
-  color: #333333; /* Color de texto oscuro al activar */
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5); /* Same shadow as hover for consistency */
+  transform: translateY(-4px);
+  background-color: #fdea14;
+  color: #333333;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
 }
 
-/* Specific active state for volver-button to ensure consistency with its default color */
 .volver-button:active {
-  transform: translateY(0); /* Volver button goes down on active, as before */
+  transform: translateY(0);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  background-color: #e0c800; /* A darker yellow on active */
+  background-color: #e0c800;
 }
 
-/* State when the feature is active (toggled by JS) */
 .top-button.button-active {
-  background-color: #fdea14; /* Color de acento cuando está activo */
-  color: #333333; /* Texto oscuro para el botón activo */
-  box-shadow: 0 0 0 5px #fdea14, 0 0 0 10px rgba(253, 234, 20, 0.4); /* Efecto de brillo y borde amarillo */
-  transform: translateY(0); /* Ensure it's not lifted when in this "active" state */
+  background-color: #fdea14;
+  color: #333333;
+  box-shadow: 0 0 0 5px #fdea14, 0 0 0 10px rgba(253, 234, 20, 0.4);
+  transform: translateY(0);
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .top-button.button-active .icon {
-  color: #333333; /* Icono oscuro para el botón activo */
+  color: #333333;
 }
 
-/* ------------------------------------------- */
-/* Controles Inferior Derecha (bottom-right-controls) */
-/* ------------------------------------------- */
 .bottom-right-controls {
   position: absolute;
-  bottom: 30px; /* Más separado del borde */
+  bottom: 30px;
   right: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 25px; /* Más espacio entre las barras */
+  gap: 25px;
   z-index: 20;
   pointer-events: all;
 }
 
 .control-bar {
-  background-color: #fdea14; /* Amarillo Innsa */
-  color: #333; /* Texto oscuro para contraste */
-  padding: 20px 35px; /* Más padding para una sensación más "sólida" */
-  border-radius: 18px; /* Más redondeado */
-  font-size: 1.3em; /* Texto más grande y legible */
+  background-color: #fdea14;
+  color: #333;
+  padding: 20px 35px;
+  border-radius: 18px;
+  font-size: 1.3em;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* Sombra más profunda */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
-  min-width: 200px; /* Ancho mínimo para el texto */
+  min-width: 200px;
   pointer-events: all;
-  letter-spacing: 0.5px; /* Espaciado sutil entre letras */
+  letter-spacing: 0.5px;
 }
 
 .control-bar:hover {
-  background-color: #e0c800; /* Tono más oscuro al pasar el ratón */
-  transform: translateY(-5px); /* Efecto "levantar" más pronunciado */
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */
+  background-color: #e0c800;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
 
 .control-bar:active {
@@ -214,30 +195,29 @@ canvas {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* Nuevo botón flotante de información */
 .floating-info-button {
   position: fixed;
   bottom: 30px;
   left: 30px;
-  width: 60px; /* Tamaño del botón */
+  width: 60px;
   height: 60px;
-  background-color: #fdea14; /* Amarillo Innsa */
+  background-color: #fdea14;
   border: none;
-  border-radius: 50%; /* Redondo */
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* Sombra similar a los otros controles */
+  border-radius: 50%;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 25; /* Menor que el overlay de comentarios pero mayor que el canvas */
+  z-index: 25;
   transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.3s ease, opacity 0.3s ease; /* Transición para ocultar/mostrar */
+    box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .floating-info-button .icon {
-  width: 32px; /* Tamaño del ícono dentro del botón */
+  width: 32px;
   height: 32px;
-  color: #333; /* Color oscuro para el ícono */
+  color: #333;
 }
 
 .floating-info-button:hover {
@@ -252,58 +232,50 @@ canvas {
 }
 
 
-/* ------------------------------------------- */
-/* Overlays (Comentarios y Especificaciones) */
-/* ------------------------------------------- */
 .comment-overlay-container,
 .specifications-overlay-container {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.85); /* Fondo negro semi-transparente */
-  color: #ffffff; /* Texto blanco para contraste */
-  border-radius: 25px; /* Más redondeado */
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7); /* Sombra de profundidad más oscura */
-  padding: 35px; /* Más padding */
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  padding: 35px;
   box-sizing: border-box;
-  z-index: 30; /* Asegura que esté por encima del nuevo botón flotante */
+  z-index: 30;
   display: flex;
   flex-direction: column;
   pointer-events: all;
-  opacity: 0; /* Para la animación de entrada/salida */
-  transform: scale(0.95); /* Para la animación de escala */
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Animación de aparición/desaparición */
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   font-size: 0.9em;
   width: 25%;
 }
 
-/* Estado visible de los overlays */
 .comment-overlay-container:not(.hidden),
 .specifications-overlay-container:not(.hidden) {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Posición inferior izquierda para el contenedor de comentarios */
 .comment-overlay-container {
   bottom: 30px;
   left: 30px;
   width: 25%;
-  max-width: 500px; /* Ancho máximo ligeramente mayor */
-  min-height: 200px; /* Altura mínima para asegurar espacio */
-  display: flex; /* Asegura flexbox para el contenido */
+  max-width: 500px;
+  min-height: 200px;
+  display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Empuja los botones hacia abajo */
+  justify-content: space-between;
 }
 
-/* Posición superior derecha para las especificaciones */
 .specifications-overlay-container {
-  top: 100px; /* Ajuste para la barra superior más alta */
+  top: 100px;
   right: 30px;
   width: 25%;
-  max-width: 450px; /* Ancho máximo ligeramente mayor */
-  /* Altura calculada: Altura total del viewport - altura de la barra superior (75px) - margen superior (100px - 75px) - margen inferior (30px) - padding del overlay (2*35px) - altura aproximada del control-bar (70px) */
-  /* Ajuste preciso: 100vh - (top) - (bottom margin of control-bar) - (height of control-bar) - (padding of overlay) */
-  max-height: calc(100vh - 100px - 30px - 70px); /* 100px (top) + 30px (bottom margin) + 70px (approx height of spec bar) */
-  overflow-y: auto; /* Scroll si el contenido es largo */
+  max-width: 450px;
+  max-height: calc(100vh - 100px - 30px - 70px);
+  overflow-y: auto;
 }
 
 .overlay-header {
@@ -311,17 +283,16 @@ canvas {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco semi-transparente */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .overlay-header h3 {
   margin: 0;
-  font-size: 1.5em; /* Título más grande para escritorio */
-  color: #ffffff; /* Título en blanco (antes amarillo) */
-  font-weight: 700; /* Negrita */
+  font-size: 1.5em;
+  color: #ffffff;
+  font-weight: 700;
 }
 
-/* El close-overlay-button es para los overlays de comentarios y especificaciones */
 .close-overlay-button {
   background-color: #333333;
   color: #ffffff;
@@ -350,25 +321,25 @@ canvas {
 }
 
 .overlay-content {
-  flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .comment-text {
-  font-size: 1.2em; /* Texto del comentario ligeramente más grande */
-  line-height: 1.8; /* Mejor interlineado */
+  font-size: 1.2em;
+  line-height: 1.8;
   text-align: center;
-  margin-bottom: 30px; /* Más espacio */
-  color: #e0e0e0; /* Gris claro para el texto de comentario */
+  margin-bottom: 30px;
+  color: #e0e0e0;
 }
 
 .navigation-buttons-group {
   display: flex;
   justify-content: center;
-  gap: 25px; /* Más espacio entre botones */
-  margin-top: auto; /* Empuja los botones al final del contenedor flexible */
+  gap: 25px;
+  margin-top: auto;
 }
 
 .nav-button {
@@ -415,7 +386,7 @@ canvas {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-top: 20px; /* Valor por defecto para escritorio */
+  margin-top: 20px;
 }
 
 .specifications-list li {
@@ -452,43 +423,38 @@ canvas {
   margin-bottom: 0;
 }
 
-/* Utilidad para ocultar elementos */
 .hidden {
   display: none !important;
 }
 
-/* ------------------------------------------- */
-/* Estilos para el Overlay de Video */
-/* ------------------------------------------- */
 .video-overlay-container {
-    position: relative; /* Esencial para posicionar el botón absolutamente */
+    position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centrado perfecto */
-    background-color: rgba(0, 0, 0, 0.95); /* Fondo muy oscuro para el video */
-    border: 3px solid #fdea14; /* Contorno amarillo */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 0 30px rgba(253, 234, 20, 0.6); /* Sombra brillante amarilla */
-    z-index: 1000; /* Asegura que esté por encima de todo */
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.95);
+    border: 3px solid #fdea14;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(253, 234, 20, 0.6);
+    z-index: 1000;
     
-    display: flex; /* Flexbox para que el video ocupe el espacio */
-    flex-direction: column; /* Video y botón estarán apilados si no fuera por absolute */
-    justify-content: center; /* Centrar contenido en el eje principal (vertical) */
-    align-items: center; /* Centrar contenido en el eje cruzado (horizontal) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    /* Padding general alrededor del contenido, sin padding-top extra que reste espacio al video */
     padding: 15px; 
     box-sizing: border-box;
 
     width: 60vw;
     height: 60vh;
-    aspect-ratio: 16 / 9; /* Mantiene la relación de aspecto del video */
-    max-width: 960px;
-    max-height: 540px;
+    max-width: 389px;
+    max-height: 219px;
+    aspect-ratio: 16 / 9;
 
-    opacity: 0; /* Para la animación de entrada/salida */
-    transform: translate(-50%, -50%) scale(0.9); /* Escala inicial para animación */
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Animación de aparición/desaparición */
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .video-overlay-container:not(.hidden) {
@@ -497,11 +463,11 @@ canvas {
 }
 
 .close-video-button {
-    background-color: #333333; /* Botón oscuro */
+    background-color: #333333;
     color: #ffffff;
     border: none;
     border-radius: 50%;
-    width: 35px; /* Tamaño del botón */
+    width: 35px;
     height: 35px;
     font-size: 1.2em;
     cursor: pointer;
@@ -511,11 +477,10 @@ canvas {
     transition: background-color 0.2s ease, transform 0.2s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     
-    /* Posicionamiento absoluto sobre el contenido del video */
     position: absolute;
-    top: 10px; /* Distancia desde el borde superior del contenedor */
-    right: 10px; /* Distancia desde el borde derecho del contenedor */
-    z-index: 1001; /* Asegura que esté por encima del video */
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
 }
 
 .close-video-button .icon {
@@ -526,35 +491,32 @@ canvas {
 
 .close-video-button:hover {
     background-color: #555555;
-    transform: rotate(90deg); /* Rotación sutil para efecto "cerrar" */
+    transform: rotate(90deg);
 }
 
 .video-content {
-    flex-grow: 1; /* Permite que el iframe ocupe todo el espacio restante */
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ocupa todo el ancho disponible del padding-box del contenedor */
-    height: 100%; /* Ocupa todo el alto disponible del padding-box del contenedor */
+    width: 100%;
+    height: 100%;
 }
 
 .video-content iframe {
     width: 100%;
     height: 100%;
-    border-radius: 8px; /* Bordes redondeados para el iframe */
+    border-radius: 8px;
 }
 
-/* ------------------------------------------- */
-/* Nuevo Overlay de Compra */
-/* ------------------------------------------- */
 .dark-background-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
-  z-index: 900; /* Detrás del purchase-overlay, pero encima del canvas */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
   transition: opacity 0.4s ease-out;
 }
 
@@ -562,21 +524,21 @@ canvas {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9); /* Centrado y escala inicial para animación */
-  background-color: #000000; /* Fondo negro */
-  color: #ffffff; /* Texto blanco */
-  border: 3px solid #fdea14; /* Margen amarillo */
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #fdea14;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-  padding: 40px; /* Más padding para una sensación premium */
+  padding: 40px;
   box-sizing: border-box;
-  z-index: 1000; /* Asegura que esté por encima de todo */
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   max-width: 500px;
-  width: 90%; /* Responsivo */
+  width: 90%;
   opacity: 0;
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
@@ -587,8 +549,8 @@ canvas {
 }
 
 .purchase-overlay-content h3 {
-  font-size: 2em; /* Título grande y profesional */
-  color: #ffffff; /* Blanco (antes amarillo Innsa) */
+  font-size: 2em;
+  color: #ffffff;
   margin-bottom: 30px;
   font-weight: 700;
   line-height: 1.3;
@@ -596,14 +558,14 @@ canvas {
 
 .purchase-buttons-group {
   display: flex;
-  gap: 20px; /* Espacio entre los botones */
+  gap: 20px;
   justify-content: center;
-  flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+  flex-wrap: wrap;
 }
 
 .purchase-button {
   border: none;
-  border-radius: 12px; /* Bordes redondeados */
+  border-radius: 12px;
   padding: 15px 30px;
   font-size: 1.1em;
   font-weight: bold;
@@ -613,7 +575,7 @@ canvas {
 }
 
 .purchase-button.grey-button {
-  background-color: #666666; /* Gris oscuro */
+  background-color: #666666;
   color: #ffffff;
 }
 
@@ -624,58 +586,50 @@ canvas {
 }
 
 .purchase-button.yellow-button {
-  background-color: #fdea14; /* Amarillo Innsa */
-  color: #333333; /* Texto oscuro para contraste */
+  background-color: #fdea14;
+  color: #333333;
 }
 
 .purchase-button.yellow-button:hover {
-  background-color: #e0c800; /* Tono más oscuro de amarillo */
+  background-color: #e0c800;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* ------------------------------------------- */
-/* Nuevo Overlay de Bienvenida */
-/* ------------------------------------------- */
 .welcome-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
-  z-index: 2000; /* Muy por encima de todo lo demás */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .welcome-content {
-  background-color: #000000; /* Fondo negro */
-  color: #ffffff; /* Texto blanco */
-  border: 3px solid #fdea14; /* Borde amarillo */
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #fdea14;
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
   padding: 40px;
   text-align: center;
-  max-width: 500px; /* Aumentado para el nuevo texto */
-  width: 80%; /* Responsivo */
-  transform: scale(1); /* Para animación de escala */
+  max-width: 500px;
+  width: 80%;
+  transform: scale(1);
   transition: transform 0.3s ease-out;
 }
 
 .welcome-content h2 {
-  font-size: 1.2em; /* Ajustado para ser más pequeño */
+  font-size: 1.2em;
   margin-bottom: 30px;
-  color: #ffffff; /* Color blanco */
-  line-height: 1.4; /* Mejor interlineado para el texto largo */
+  color: #ffffff;
+  line-height: 1.4;
 }
 
-/* ------------------------------------------- */
-/* Media Queries para Responsividad */
-/* ------------------------------------------- */
-
-/* Para pantallas con un ancho máximo de 1024px (típicamente tablets en vertical y móviles en vertical/horizontal) */
 @media (max-width: 1024px) {
   .top-bar {
     height: 60px;
@@ -684,7 +638,7 @@ canvas {
   }
 
   .top-bar-logo {
-    max-height: 70%; /* Reduce un poco más el logo en tablets */
+    max-height: 70%;
   }
 
   .top-button {
@@ -704,7 +658,6 @@ canvas {
     padding-right: 20px;
   }
 
-  /* Reducir el contorno amarillo para .top-button.button-active en móviles */
   .top-button.button-active {
     box-shadow: 0 0 0 3px #fdea14, 0 0 0 6px rgba(253, 234, 20, 0.4);
   }
@@ -734,24 +687,21 @@ canvas {
     height: 28px;
   }
 
-  /* Ajuste para el overlay de comentarios en móviles y tablets */
   .comment-overlay-container {
     bottom: 15px;
     left: 15px;
-    width: calc((100% - 30px) * 0.64); /* Reducido el ancho en un 20% adicional */
-    max-width: 288px; /* (360px * 0.8) */
+    width: calc((100% - 30px) * 0.64);
+    max-width: 288px;
     padding: 20px;
     border-radius: 15px;
     min-height: auto;
   }
 
-  /* Ajuste para el overlay de especificaciones en móviles y tablets */
   .specifications-overlay-container {
     top: 75px;
     right: 15px;
     width: calc(80% - 30px);
     max-width: 360px;
-    /* Calculo: (Altura del viewport - altura de la barra superior - margen inferior del control-bar - altura del control-bar - un espacio de seguridad) */
     max-height: calc(var(--vh, 1vh) * 100 - 60px - 15px - 44px - 20px);
     padding: 20px;
     border-radius: 15px;
@@ -766,7 +716,6 @@ canvas {
     font-size: 1.1em;
   }
 
-  /* El close-overlay-button de los overlays de comentarios y especificaciones, mantener */
   .close-overlay-button {
     width: 30px;
     height: 30px;
@@ -813,11 +762,10 @@ canvas {
   }
 
 
-  /* Regla anidada para orientación horizontal dentro de pantallas <= 1024px */
   @media (orientation: landscape) {
     .comment-overlay-container {
-      width: calc(50vw * 0.64); /* Reducido el ancho en un 20% adicional */
-      max-width: 243px; /* (304px * 0.8) */
+      width: calc(50vw * 0.64);
+      max-width: 243px;
       padding: 15px;
       left: 15px;
     }
@@ -828,7 +776,6 @@ canvas {
       width: calc(35vw - 30px);
       max-width: 304px;
       padding: 15px;
-      /* Calculo: (Altura del viewport - altura de la barra superior - margen inferior del control-bar - altura del control-bar - un espacio de seguridad) */
       max-height: calc(var(--vh, 1vh) * 100 - 45px - 15px - 44px - 25px);
     }
 
@@ -859,10 +806,14 @@ canvas {
     .specifications-list li::before {
       left: 10px;
     }
+
+    .video-overlay-container {
+      max-width: 317px;
+      max-height: 178px;
+    }
   }
 }
 
-/* Ajustes adicionales para anchos muy pequeños en horizontal (ej. iPhone SE en horizontal) */
 @media (max-width: 600px) and (orientation: landscape) {
   .top-bar {
     height: 45px;
@@ -870,7 +821,7 @@ canvas {
   }
 
   .top-bar-logo {
-    max-height: 60%; /* Reduce el logo aún más en pantallas muy pequeñas */
+    max-height: 60%;
   }
 
   .top-button {
@@ -889,7 +840,6 @@ canvas {
     padding-right: 10px;
   }
 
-  /* Reducir el contorno amarillo para .top-button.button-active en móviles muy pequeños */
   .top-button.button-active {
     box-shadow: 0 0 0 2px #fdea14, 0 0 0 4px rgba(253, 234, 20, 0.4);
   }
@@ -918,7 +868,6 @@ canvas {
     height: 24px;
   }
 
-  /* REVERTED: overlay de comentarios en horizontal pequeño */
   .comment-overlay-container {
     bottom: 8px;
     left: 8px;
@@ -927,7 +876,6 @@ canvas {
     padding: 10px;
   }
 
-  /* REVERTED: overlay de especificaciones en horizontal pequeño */
   .specifications-overlay-container {
     top: 55px;
     right: 8px;
@@ -938,48 +886,40 @@ canvas {
     border-radius: 15px;
   }
 
-  /* REVERTED: título de overlay en horizontal pequeño */
   .overlay-header h3 {
     font-size: 0.8em;
   }
 
-  /* REVERTED: close button en horizontal pequeño */
   .close-overlay-button {
     width: 20px;
     height: 20px;
     font-size: 0.8em;
   }
 
-  /* REVERTED: close button icon en horizontal pequeño */
   .close-overlay-button .icon {
     width: 10px;
     height: 10px;
   }
 
-  /* REVERTED: texto de comentario en horizontal pequeño */
   .comment-text {
     font-size: 0.75em;
     margin-bottom: 8px;
   }
 
-  /* REVERTED: nav buttons en horizontal pequeño */
   .nav-button {
     padding: 5px 10px;
     font-size: 0.7em;
   }
 
-  /* REVERTED: spec list en horizontal pequeño */
   .specifications-list {
     margin-top: 0px;
   }
 
-  /* REVERTED: spec list items en horizontal pequeño */
   .specifications-list li {
     padding: 6px 10px;
     font-size: 0.7em;
     padding-left: 20px;
   }
-  /* REVERTED: spec list item before en horizontal pequeño */
   .specifications-list li::before {
     left: 8px;
     width: 5px;
@@ -987,7 +927,6 @@ canvas {
   }
 
 
-    /* REVERTED: Ajuste de video en horizontal para pantallas muy pequeñas */
     .video-overlay-container {
       width: 95vw;
       max-width: 320px;
@@ -1001,77 +940,75 @@ canvas {
       width: 10px;
       height: 10px;
     }
+
+    .video-overlay-container {
+      max-width: 211px;
+      max-height: 119px;
+    }
 }
 
-/* NUEVAS REGLAS PARA MEJORAR LA DISPOSICIÓN EN MÓVILES VERTICALES */
 @media (max-width: 480px) and (orientation: portrait) {
   .top-bar {
-    height: 50px; /* Altura más compacta */
-    padding: 0 8px; /* Menos padding horizontal */
+    height: 50px;
+    padding: 0 8px;
   }
 
   .top-bar-logo {
-    /* Mantener posicionamiento absoluto y centrado */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 70%; /* Ajuste para el logo */
+    max-height: 70%;
   }
 
   .top-bar-left,
   .top-bar-right {
-    /* Mantener flex-grow para que ocupen el espacio restante alrededor del logo */
     flex-grow: 1;
     display: flex;
     align-items: center;
   }
 
   .top-bar-right {
-    gap: 3px; /* Espacio más compacto entre los botones 'Orbitar' e 'Info. 3D' */
+    gap: 3px;
   }
 
   .top-button {
-    padding: 5px 8px; /* Padding más pequeño */
-    margin-left: 0; /* Eliminar margin-left para usar gap en el contenedor */
-    font-size: 0.7em; /* Texto más pequeño */
-    border-radius: 6px; /* Bordes menos redondeados */
+    padding: 5px 8px;
+    margin-left: 0;
+    font-size: 0.7em;
+    border-radius: 6px;
   }
 
   .top-button .icon {
-    width: 14px; /* Iconos más pequeños */
+    width: 14px;
     height: 14px;
-    margin-right: 2px; /* Menos espacio entre icono y texto */
+    margin-right: 2px;
   }
 
   .volver-button {
-    padding-right: 10px; /* Ajustar padding para el botón Volver */
+    padding-right: 10px;
   }
 
-  /* Reducir el contorno amarillo para .top-button.button-active en móviles verticales */
   .top-button.button-active {
     box-shadow: 0 0 0 2px #fdea14, 0 0 0 4px rgba(253, 234, 20, 0.4);
   }
 
-  /* Reducir el tamaño del botón de especificaciones un 30% para móviles en vertical */
   .control-bar.specifications-bar {
-    padding: 8px 14px; /* Reducir padding */
-    font-size: 0.8em; /* Reducir tamaño de fuente */
-    min-width: 100px; /* Reducir ancho mínimo */
-    border-radius: 8px; /* Ajustar borde redondeado */
+    padding: 8px 14px;
+    font-size: 0.8em;
+    min-width: 100px;
+    border-radius: 8px;
   }
 
-  /* Reducir el tamaño del overlay de comentarios un 10% adicional para móviles en vertical */
   .comment-overlay-container {
     bottom: 15px;
     left: 15px;
-    width: calc((100% - 30px) * 0.576); /* 0.64 * 0.9 = 0.576 */
-    max-width: 259.2px; /* 288 * 0.9 = 259.2 */
+    width: calc((100% - 30px) * 0.576);
+    max-width: 259.2px;
     padding: 20px;
     border-radius: 15px;
     min-height: auto;
   }
 
-  /* REVERTED: Ajuste de los overlays para pantallas verticales muy pequeñas */
   .specifications-overlay-container {
     top: 75px;
     right: 15px;
@@ -1082,44 +1019,37 @@ canvas {
     border-radius: 15px;
   }
 
-  /* REVERTED: título de overlay en vertical pequeño */
   .overlay-header h3 {
     font-size: 1.1em;
   }
 
-  /* REVERTED: close button en vertical pequeño */
   .close-overlay-button {
     width: 30px;
     height: 30px;
     font-size: 1.1em;
   }
 
-  /* REVERTED: close button icon en vertical pequeño */
   .close-overlay-button .icon {
     width: 16px;
     height: 16px;
   }
 
-  /* REVERTED: texto de comentario en vertical pequeño */
   .comment-text {
     font-size: 0.95em;
     line-height: 1.5;
     margin-bottom: 20px;
   }
 
-  /* REVERTED: nav buttons en vertical pequeño */
   .nav-button {
     padding: 10px 20px;
     font-size: 0.9em;
     border-radius: 8px;
   }
 
-  /* REVERTED: spec list en vertical pequeño */
   .specifications-list {
     margin-top: 5px;
   }
 
-  /* REVERTED: spec list items en vertical pequeño */
   .specifications-list li {
     padding: 10px 15px;
     font-size: 0.9em;
@@ -1127,72 +1057,65 @@ canvas {
     border-radius: 8px;
     padding-left: 30px;
   }
-  /* REVERTED: spec list item before en vertical pequeño */
   .specifications-list li::before {
     left: 12px;
     width: 6px;
     height: 6px;
   }
 
-  /* NUEVA REGLA: Reducir el largo (altura) de la ventana de video en un 50% */
   .video-overlay-container {
-      height: 30vh; /* 60vh * 0.5 */
-      max-height: 270px; /* 540px * 0.5 */
+      height: 30vh;
+      max-height: 270px;
   }
 }
 
-/* Ajustes específicos para móviles en vertical muy pequeños (ej. iPhone 5/SE) */
 @media (max-width: 375px) and (orientation: portrait) {
   .top-bar {
-    height: 45px; /* Aún más compacta */
-    padding: 0 5px; /* Padding mínimo */
+    height: 45px;
+    padding: 0 5px;
   }
 
   .top-bar-logo {
-    max-height: 60%; /* Logo más pequeño */
+    max-height: 60%;
   }
 
   .top-bar-right {
-    gap: 2px; /* Espacio mínimo */
+    gap: 2px;
   }
 
   .top-button {
-    padding: 4px 6px; /* Padding muy reducido */
-    font-size: 0.65em; /* Texto muy pequeño */
+    padding: 4px 6px;
+    font-size: 0.65em;
   }
 
   .top-button .icon {
-    width: 12px; /* Iconos muy pequeños */
+    width: 12px;
     height: 12px;
-    margin-right: 1px; /* Espacio mínimo entre icono y texto */
+    margin-right: 1px;
   }
 
   .volver-button {
-    padding-right: 8px; /* Ajuste final para el botón Volver */
+    padding-right: 8px;
   }
 
-  /* Reducir el contorno amarillo para .top-button.button-active en móviles muy pequeños verticales */
   .top-button.button-active {
     box-shadow: 0 0 0 1px #fdea14, 0 0 0 2px rgba(253, 234, 20, 0.4);
   }
 
-  /* Reducir aún más el botón de especificaciones para móviles en vertical */
   .control-bar.specifications-bar {
-    padding: 6px 10px; /* Reducir aún más padding */
-    font-size: 0.7em; /* Reducir aún más tamaño de fuente */
-    min-width: 80px; /* Reducir aún más ancho mínimo */
+    padding: 6px 10px;
+    font-size: 0.7em;
+    min-width: 80px;
   }
 
-  /* Reducir aún más el tamaño del overlay de comentarios para móviles en vertical */
   .comment-overlay-container {
     bottom: 15px;
     left: 15px;
-    width: calc((100% - 30px) * 0.576); /* Mantiene la proporción */
-    max-width: 259.2px; /* Mantiene la proporción */
-    padding: 15px; /* Reducir padding */
+    width: calc((100% - 30px) * 0.576);
+    max-width: 259.2px;
+    padding: 15px;
   }
 
-  /* REVERTED: overlay de especificaciones en vertical muy pequeño */
   .specifications-overlay-container {
     top: 75px;
     right: 15px;
@@ -1203,44 +1126,37 @@ canvas {
     border-radius: 15px;
   }
 
-  /* REVERTED: título de overlay en vertical muy pequeño */
   .overlay-header h3 {
     font-size: 1.1em;
   }
 
-  /* REVERTED: close button en vertical muy pequeño */
   .close-overlay-button {
     width: 30px;
     height: 30px;
     font-size: 1.1em;
   }
 
-  /* REVERTED: close button icon en vertical muy pequeño */
   .close-overlay-button .icon {
     width: 16px;
     height: 16px;
   }
 
-  /* REVERTED: texto de comentario en vertical muy pequeño */
   .comment-text {
     font-size: 0.95em;
     line-height: 1.5;
     margin-bottom: 20px;
   }
 
-  /* REVERTED: nav buttons en vertical muy pequeño */
   .nav-button {
     padding: 10px 20px;
     font-size: 0.9em;
     border-radius: 8px;
   }
 
-  /* REVERTED: spec list en vertical muy pequeño */
   .specifications-list {
     margin-top: 5px;
   }
 
-  /* REVERTED: spec list items en vertical muy pequeño */
   .specifications-list li {
     padding: 10px 15px;
     font-size: 0.9em;
@@ -1248,16 +1164,14 @@ canvas {
     border-radius: 8px;
     padding-left: 30px;
   }
-  /* REVERTED: spec list item before en vertical muy pequeño */
   .specifications-list li::before {
     left: 12px;
     width: 6px;
     height: 6px;
   }
 
-  /* NUEVA REGLA: Reducir aún más el largo (altura) de la ventana de video en un 50% para pantallas muy pequeñas */
   .video-overlay-container {
-      height: 30vh; /* 60vh * 0.5 */
-      max-height: 270px; /* 540px * 0.5 */
+      height: 30vh;
+      max-height: 270px;
   }
 }

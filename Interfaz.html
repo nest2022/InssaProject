@@ -6,19 +6,18 @@
     <title>Innsa: Modelo Interactivo</title>
     <script type="module" src="main.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <!-- Preconnect para Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Contenedor principal de la aplicación -->
+
     <div class="main-container" id="main-container">
-      <!-- Barra superior - Siempre visible -->
+
       <div class="top-bar" id="top-bar">
         <div class="top-bar-left">
           <button id="volver-menu" class="top-button volver-button">
-            <!-- Usando SVG inline para los íconos de mejor control de estilo -->
+
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
@@ -52,14 +51,14 @@
         </div>
       </div>
 
-      <!-- Controles de especificaciones en la parte inferior derecha -->
+
       <div class="bottom-right-controls">
         <div class="control-bar specifications-bar" id="specifications-toggle-bar">
           Especificaciones
         </div>
       </div>
 
-      <!-- Contenedor de comentarios (aparece al hacer clic en 'Información') -->
+
       <div class="comment-overlay-container" id="comment-overlay-container">
         <div class="overlay-header">
           <h3>Información del Modelo</h3>
@@ -79,7 +78,7 @@
         </div>
       </div>
 
-      <!-- Contenedor de especificaciones (aparece al hacer clic en 'Especificaciones') -->
+
       <div class="specifications-overlay-container hidden" id="specifications-overlay-container">
         <div class="overlay-header">
           <h3>Especificaciones del Producto</h3>
@@ -92,14 +91,14 @@
         </div>
         <div class="overlay-content">
           <ul class="specifications-list" id="specifications-list">
-            <!-- Las especificaciones se cargarán aquí desde main.js -->
+
           </ul>
         </div>
       </div>
 
-      <!-- El canvas de Three.js se adjuntará directamente al body por main.js -->
+
     </div>
-    <!-- Botón flotante de información - FUERA del main-container para evitar problemas de pointer-events -->
+
     <button id="floating-info-button" class="floating-info-button hidden">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"></circle>
@@ -108,7 +107,7 @@
       </svg>
     </button>
 
-    <!-- Overlay de bienvenida -->
+
     <div id="welcome-overlay" class="welcome-overlay">
       <div class="welcome-content">
         <h2>Para una experiencia óptima, recomendamos usar su dispositivo en formato horizontal.</h2>

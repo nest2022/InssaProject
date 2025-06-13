@@ -1,6 +1,6 @@
 import * as THREE from "./build/three.module.js";
 
-export function createTextSprite(text, ocultarIndex = null) { // Nuevo parámetro ocultarIndex
+export function createTextSprite(text, ocultarIndex = null) { 
   const maxWidthLogical = 400;
   const lineHeightLogical = 48;
   const paddingYLogical = 10;

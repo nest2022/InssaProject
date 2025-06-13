@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Innsa: Modelo Interactivo</title>
+    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Preconnect para Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Contenedor principal de la aplicación -->
+    <div class="main-container" id="main-container">
+      <!-- Barra superior - Siempre visible -->
+      <div class="top-bar" id="top-bar">
+        <div class="top-bar-left">
+          <button id="volver-menu" class="top-button volver-button">
+            <!-- Usando SVG inline para los íconos de mejor control de estilo -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Volver</span>
+          </button>
+        </div>
+        <img src="img/logo-inssa.svg" alt="Logo" class="top-bar-logo">
+        <div class="top-bar-right">
+          <button id="toggle-orbit" class="top-button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="12" y1="18" x2="12" y2="22"></line>
+              <line x1="12" y1="2" x2="12" y2="6"></line>
+              <line x1="22" y1="12" x2="18" y2="12"></line>
+              <line x1="6" y1="12" x2="2" y2="12"></line>
+            </svg>
+            <span>Orbitar</span>
+          </button>
+          <button id="toggle-textos" class="top-button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <line x1="10" y1="9" x2="8" y2="9"></line>
+            </svg>
+            <span>Info. Text</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controles de especificaciones en la parte inferior derecha -->
+      <div class="bottom-right-controls">
+        <div class="control-bar specifications-bar" id="specifications-toggle-bar">
+          Especificaciones
+        </div>
+      </div>
+
+      <!-- Contenedor de comentarios (aparece al hacer clic en 'Información') -->
+      <div class="comment-overlay-container" id="comment-overlay-container">
+        <div class="overlay-header">
+          <h3>Información del Modelo</h3>
+          <button class="close-overlay-button" id="close-comment-overlay">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="overlay-content">
+          <p class="comment-text" id="comment-text"></p>
+          <div class="navigation-buttons-group">
+            <button id="nav-left" class="nav-button">Anterior</button>
+            <button id="nav-right" class="nav-button">Siguiente</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenedor de especificaciones (aparece al hacer clic en 'Especificaciones') -->
+      <div class="specifications-overlay-container hidden" id="specifications-overlay-container">
+        <div class="overlay-header">
+          <h3>Especificaciones del Producto</h3>
+          <button class="close-overlay-button" id="close-specifications-overlay">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="overlay-content">
+          <ul class="specifications-list" id="specifications-list">
+            <!-- Las especificaciones se cargarán aquí desde main.js -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- El canvas de Three.js se adjuntará directamente al body por main.js -->
+    </div>
+    <!-- Botón flotante de información - FUERA del main-container para evitar problemas de pointer-events -->
+    <button id="floating-info-button" class="floating-info-button hidden">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+    </button>
+
+    <!-- Overlay de bienvenida -->
+    <div id="welcome-overlay" class="welcome-overlay">
+      <div class="welcome-content">
+        <h2>Para una experiencia óptima, recomendamos usar su dispositivo en formato horizontal.</h2>
+        <button id="welcome-ok-button" class="nav-button">Entendido</button>
+      </div>
+    </div>
+  </body>
+</html>
